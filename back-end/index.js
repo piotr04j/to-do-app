@@ -5,11 +5,13 @@ const morgan = require('morgan');
 const router = require('./router');
 const mongoose = require('mongoose');
 const mongodb = require('./config/devConfig');
+const cors = require('cors');
 
 const app = express();
 
 
 app.use(morgan('combined'));
+app.use(cors())
 app.use(bodyParser.json({type: '*/*'}));
 router(app);
 

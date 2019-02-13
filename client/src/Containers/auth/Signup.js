@@ -1,10 +1,15 @@
 import React,{ Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 class Signup extends Component {
 
     onSubmit = (formProps) => {
-        console.log(formProps);
+        this.props.signup(formProps, () => {
+            this.props.history.push('/account');
+        });
     };
 
     render(){
@@ -21,10 +26,25 @@ class Signup extends Component {
                     <label>password</label>
                     <Field name="password" type="password" component="input" autoComplete="off" />
                 </fieldset>
+                <div>
+                    { this.props.errorMessage }
+                </div>
                 <button>Sign up</button>
             </form>
         )
     }
 }
 
-export default reduxForm({ form: 'signup'})(Signup);
+const mapStateToProps = state => {
+    return {
+        errorMessage: state.auth.errorMessage
+    }
+}
+
+const mapDispatchToAction = dispatch => {
+    return {
+        signup: (mailProps,callback) => dispatch(actions.signup(mailProps,callback))
+    }
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToAction),reduxForm({ form: 'signup'}))(Signup);

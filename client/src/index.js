@@ -8,6 +8,7 @@ import App from './Components/App';
 
 import Home from './Components/Home';
 import Signup from './Containers/auth/Signup';
+import Account from './Containers/account/Account';
 import reducers from './reducers';
 
 const store = createStore(reducers,{}, applyMiddleware(reduxThunk));
@@ -19,6 +20,7 @@ ReactDOM.render(
             <App >
                 <Switch>
                     <Route path='/signup' component={Signup}/>
+                    <Route path='/account' component={Account}/>
                     <Route path='/' component={Home}/>
                 </Switch>         
             </App>
