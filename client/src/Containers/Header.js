@@ -1,11 +1,32 @@
 import React,{ Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class Header extends Component {
 
-    state = {
-        
+    renderLinks = () => {
+
+        if(this.props.authenticated){
+            return (
+                <li className="nav-item">
+                    <Link className="nav-item nav-link " to="/signout" >Sing Out</Link>
+                </li>
+                 
+            )
+        }  else {
+            return (
+                <React.Fragment>
+                    <li className="nav-item">
+                        <Link className="nav-item nav-link" to="/signin">Sign In</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-item nav-link" to="/signup">Sign Up</Link>
+                    </li>
+                </React.Fragment>
+            )
+        }
+
     }
 
     render(){
@@ -20,15 +41,7 @@ class Header extends Component {
                         <li className="nav-item active">
                             <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-item nav-link" to="/sigin">Sign In</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-item nav-link" to="/signup">Sign Up</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-item nav-link disabled" to="/singout" >Sing Out</Link>
-                        </li>
+                        {this.renderLinks()}
                     </ul>
             
                 </div>
@@ -37,4 +50,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+        authenticated: state.auth.authenticated
+    };
+};
+
+export default connect(mapStateToProps)(Header);

@@ -20,7 +20,7 @@ class Signup extends Component {
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 <fieldset>
                     <label>email</label>
-                    <Field name="email" type="text" component="input" autoComplete="off" />
+                    <Field name="email" type="email" component="input" autoComplete="off" />
                 </fieldset>
                 <fieldset>
                     <label>password</label>
@@ -41,10 +41,10 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToAction = dispatch => {
+const mapDispatchToProps= dispatch => {
     return {
         signup: (mailProps,callback) => dispatch(actions.signup(mailProps,callback))
     }
 }
 
-export default compose(connect(mapStateToProps, mapDispatchToAction),reduxForm({ form: 'signup'}))(Signup);
+export default compose(connect(mapStateToProps, mapDispatchToProps),reduxForm({ form: 'signup'}))(Signup);

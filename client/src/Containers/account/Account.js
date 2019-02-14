@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import requireAuth from '../requierAuth'
 
 class Account extends Component {
 
@@ -9,4 +10,4 @@ class Account extends Component {
     }
 }
 
-export default Account;
+export default requireAuth(Account);
