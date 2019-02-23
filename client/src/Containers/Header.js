@@ -9,10 +9,14 @@ class Header extends Component {
 
         if(this.props.authenticated){
             return (
-                <li className="nav-item">
-                    <Link className="nav-item nav-link " to="/signout" >Sing Out</Link>
-                </li>
-                 
+                <React.Fragment>
+                    <li className="nav-item">
+                        <Link className="nav-item nav-link " to="/account" >Account</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-item nav-link " to="/signout" >Sing Out</Link>
+                    </li>
+                </React.Fragment> 
             )
         }  else {
             return (

@@ -1,6 +1,6 @@
 import * as type from '../actions/types';
 
-export default (state = { authenticated: localStorage.getItem('token'), errorMessage: ''}, action) => {
+export default (state = { authenticated: localStorage.getItem('token'), userEmail:'', errorMessage: ''}, action) => {
 
     if(type.AUTH_USER === action.type){
         return {
@@ -13,6 +13,14 @@ export default (state = { authenticated: localStorage.getItem('token'), errorMes
         return {
             ...state,
             errorMessage: action.payload
+        }
+    }
+
+    if(type.AUTH_LOGOUT === action.type){
+        return {
+            ...state,
+            authenticated: action.payload,
+            userEmail: action.payload
         }
     }
     

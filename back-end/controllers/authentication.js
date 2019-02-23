@@ -11,8 +11,6 @@ exports.signup = (req,res,next) => {
     const email = req.body.email;
     const password = req.body.password;
 
-
-    //class represents all users
     User.findOne({email}, (err, existingUser) => {
 
         if(err) return next(err);
@@ -38,4 +36,5 @@ exports.signup = (req,res,next) => {
 exports.signin = (req,res,next) => {
     res.send({token: tokenForUser(req.user)});
 };
+
 

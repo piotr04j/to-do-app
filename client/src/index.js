@@ -25,6 +25,7 @@ ReactDOM.render(
                     <Route path='/account' component={Account}/>
                     <Route path='/signout' component={Signout}/>
                     <Route path='/signin' component={Signin}/>
+                    <Route path='/account' component={Account}/>
                     <Route path='/' component={Home}/>
                 </Switch>         
             </App>

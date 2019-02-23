@@ -11,6 +11,7 @@ class Signin extends Component {
         this.props.signin(formProps, () => {
             this.props.history.push('/account');
         });
+
     };
 
 
@@ -43,7 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signin: (formProps,callback) => dispatch(actions.signin(formProps,callback))
+        signin: (formProps,callback) => dispatch(actions.signin(formProps,callback)),
+        createList: (token,callback) => dispatch(actions.signin(token))
     };
 };
 

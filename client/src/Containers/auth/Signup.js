@@ -43,7 +43,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps= dispatch => {
     return {
-        signup: (mailProps,callback) => dispatch(actions.signup(mailProps,callback))
+        signup: (mailProps,callback) => dispatch(actions.signup(mailProps,callback)),
+        createList: (token) => dispatch(actions.createList(token))
     }
 }
 
